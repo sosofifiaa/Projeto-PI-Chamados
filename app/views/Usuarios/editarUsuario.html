@@ -1,0 +1,11 @@
+#{extends 'main.html' /}
+<h1>Editar Usuário</h1>
+<form action="@{Usuarios.atualizarUsuario(u.id)}" method="POST">
+    <label>Nome</label>
+    <input type="text" name="u.nome" value="${u.nome}" />
+    <label>E-mail</label>
+    <input type="email" name="u.email" value="${u.email}" />
+    <label>Senha</label>
+    <input type="password" name="u.senha" value="${u.senha}" />
+    <input type="submit" value="Atualizar" />
+</form>

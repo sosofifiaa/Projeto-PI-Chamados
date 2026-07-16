@@ -1,0 +1,13 @@
+#{extends 'main.html' /}
+<h1>Editar Equipamento</h1>
+<form action="@{Usuarios.atualizarEquipamento(e.id)}" method="POST">
+    <label>Nome</label>
+    <input type="text" name="e.nome" value="${e.nome}" />
+    <label>Patrimônio</label>
+    <input type="text" name="e.patrimonio" value="${e.patrimonio}" />
+    <label>Tipo</label>
+    <input type="text" name="e.tipo" value="${e.tipo}" />
+    <label>Laboratório</label>
+    <input type="text" name="e.laboratorio" value="${e.laboratorio}" />
+    <input type="submit" value="Atualizar" />
+</form>

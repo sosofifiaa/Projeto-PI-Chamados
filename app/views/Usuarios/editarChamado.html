@@ -1,0 +1,13 @@
+#{extends 'main.html' /}
+<h1>Editar Chamado</h1>
+<form action="@{Usuarios.atualizarChamado(c.id)}" method="POST">
+    <label>Título</label>
+    <input type="text" name="c.titulo" value="${c.titulo}" />
+    <label>Descrição</label>
+    <input type="text" name="c.descricao" value="${c.descricao}" />
+    <label>Prioridade</label>
+    <input type="text" name="c.prioridade" value="${c.prioridade}" />
+    <label>Status</label>
+    <input type="text" name="c.status" value="${c.status}" />
+    <input type="submit" value="Atualizar" />
+</form>

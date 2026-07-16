@@ -1,0 +1,110 @@
+#{extends 'main.html' /}
+#{set title:'Painel Geral' /}
+
+<style>
+    body { font-family: Arial, sans-serif; }
+    h1, h2 { color: #333; }
+    table {
+        border-collapse: collapse;
+        width: 70%;
+        margin-top: 15px;
+        margin-bottom: 40px;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+    }
+    th { background-color: #f0f0f0; }
+    tr:hover { background-color: #f9f9f9; }
+    a.novo {
+        display: inline-block;
+        margin-bottom: 10px;
+        text-decoration: none;
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 14px;
+        border-radius: 4px;
+    }
+    a.novo:hover { background-color: #45a049; }
+</style>
+
+<h1>Painel Geral</h1>
+
+<a href="@{Usuarios.form()}"> Novo Cadastro</a>
+
+<form action="@{Usuarios.pesquisar()}" method="GET">
+    <input type="text" name="termo" placeholder="Pesquisar..." />
+    <input type="submit" value="Pesquisar" />
+</form>
+
+<h2>Usuários</h2>
+<table>
+<tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Ações</th>
+</tr>
+#{list items:usuarios, as: 'u'}
+<tr>
+    <td>${u.id}</td>
+    <td>${u.nome}</td>
+    <td>${u.email}</td>
+    <td>
+        <a href="@{Usuarios.editarUsuario(u.id)}">Editar</a> |
+        <a href="@{Usuarios.removerUsuario(u.id)}">Remover</a>
+    </td>
+</tr>
+#{/list}
+</table>
+
+<h2>Equipamentos</h2>
+<table>
+<tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Patrimônio</th>
+    <th>Tipo</th>
+    <th>Laboratório</th>
+    <th>Ações</th>
+</tr>
+#{list items:equipamentos, as: 'e'}
+<tr>
+    <td>${e.id}</td>
+    <td>${e.nome}</td>
+    <td>${e.patrimonio}</td>
+    <td>${e.tipo}</td>
+    <td>${e.laboratorio}</td>
+    <td>
+        <a href="@{Usuarios.editarEquipamento(e.id)}">Editar</a> |
+        <a href="@{Usuarios.removerEquipamento(e.id)}">Remover</a>
+    </td>
+</tr>
+#{/list}
+</table>
+
+<h2>Chamado</h2>
+<table>
+<tr>
+    <th>ID</th>
+    <th>Titulo</th>
+    <th>Descrição</th>
+    <th>Prioridade</th>
+    <th>Status</th>
+    <th>Ações</th>
+</tr>
+#{list items:chamados, as: 'c'}
+<tr>
+    <td>${c.id}</td>
+    <td>${c.titulo}</td>
+    <td>${c.descricao}</td>
+    <td>${c.prioridade}</td>
+    <td>${c.status}</td>
+    <td>
+        <a href="@{Usuarios.editarChamado(c.id)}">Editar</a> |
+        <a href="@{Usuarios.removerChamado(c.id)}">Remover</a>
+    </td>
+</tr>
+#{/list}
+</table>
