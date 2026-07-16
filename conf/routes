@@ -3,6 +3,7 @@
 # ~~~~
 
 # Home page
+GET     /                                               Application.index
 GET     /Usuarios                                       Usuarios.listar
 
 # Ignore favicon requests
