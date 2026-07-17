@@ -9,9 +9,9 @@ import play.mvc.Controller;
 public class Usuarios extends Controller {
 
     public static void listar() {
-        List<Usuario> usuarios = Usuario.find("ativo = true").fetch();
+        List<Usuario> usuarios = Usuario.find("ativo = ?1", true).fetch();
         List<Equipamento> equipamentos = Equipamento.find("ativo = true").fetch();
-        List<Chamado> chamados = Chamado.find("ativo = true").fetch();
+        List<Chamado> chamados = Chamado.find("ativo = ?1", true).fetch();
         render(usuarios, equipamentos, chamados);
     }
 
