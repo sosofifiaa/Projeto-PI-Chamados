@@ -1,109 +1,20 @@
 #{extends 'main.html' /}
 #{set title:'Central de Chamados - TI' /}
 
-<style>
-    * { box-sizing: border-box; }
+<div class="page-center">
+    <div class="hero-card">
+        <div class="icone">🖥️</div>
+        <h1>Central de Chamados de TI</h1>
+        <p class="subtitulo">
+            Cadastre seu equipamento e descreva o problema para que a
+            equipe de TI possa te ajudar.
+        </p>
 
-    html, body {
-        height: 100%;
-        margin: 0;
-    }
+        <div class="hero-botoes">
+            <a class="btn btn-primary" href="@{Usuarios.form()}">Abrir Chamado</a>
+            <a class="btn btn-secondary" href="@{Usuarios.listar()}">Ver Chamados</a>
+        </div>
 
-    body {
-        font-family: Arial, sans-serif;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #2c3e50, #4CAF50);
-    }
-
-    .menu-container {
-        background-color: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-        padding: 50px 40px;
-        width: 100%;
-        max-width: 420px;
-        text-align: center;
-    }
-
-    .menu-container .icone {
-        font-size: 48px;
-        margin-bottom: 10px;
-    }
-
-    .menu-container h1 {
-        color: #333;
-        font-size: 26px;
-        margin: 0 0 8px;
-    }
-
-    .menu-container p.subtitulo {
-        color: #777;
-        margin: 0 0 35px;
-        font-size: 14px;
-        line-height: 1.4;
-    }
-
-    .menu-botoes {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .botao {
-        display: block;
-        text-decoration: none;
-        padding: 14px 20px;
-        border-radius: 6px;
-        font-size: 16px;
-        font-weight: bold;
-        transition: background-color 0.2s ease, transform 0.15s ease;
-    }
-
-    .botao:hover {
-        transform: translateY(-2px);
-    }
-
-    .botao-primario {
-        background-color: #4CAF50;
-        color: #fff;
-    }
-
-    .botao-primario:hover {
-        background-color: #45a049;
-    }
-
-    .botao-secundario {
-        background-color: #f0f0f0;
-        color: #333;
-        border: 1px solid #ccc;
-    }
-
-    .botao-secundario:hover {
-        background-color: #e2e2e2;
-    }
-
-    .rodape {
-        margin-top: 30px;
-        font-size: 12px;
-        color: #aaa;
-    }
-</style>
-
-<div class="menu-container">
-    <div class="icone">🖥️</div>
-    <h1>Central de Chamados de TI</h1>
-    <p class="subtitulo">
-        Cadastre seu equipamento e descreva o problema para que a
-        equipe de TI possa te ajudar.
-    </p>
-
-    <div class="menu-botoes">
-        <a class="botao botao-primario" href="@{Usuarios.form()}">Abrir Chamado</a>
-        <a class="botao botao-secundario" href="@{Usuarios.listar()}">Ver Chamados</a>
+        <div class="rodape">Suporte de TI &middot; Projeto PI Chamados</div>
     </div>
-
-    <div class="rodape">Suporte de TI &middot; Projeto PI Chamados</div>
 </div>

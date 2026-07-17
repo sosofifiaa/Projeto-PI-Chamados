@@ -9,9 +9,45 @@
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
     </head>
     <body>
+
+        <header class="navbar">
+            <div class="navbar-inner">
+                <a class="navbar-brand" href="@{Application.index()}">🖥️ Central de Chamados TI</a>
+
+                <button type="button" class="navbar-toggle" id="navToggle" aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="navbar-menu" id="navMenu">
+                    <li><a class="navbar-link" data-path="/" href="@{Application.index()}">Início</a></li>
+                    <li><a class="navbar-link" data-path="/Usuarios/form" href="@{Usuarios.form()}">Abrir Chamado</a></li>
+                    <li><a class="navbar-link" data-path="/Usuarios" href="@{Usuarios.listar()}">Painel Geral</a></li>
+                </ul>
+            </div>
+        </header>
+
         #{doLayout /}
-        
+
         <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script type="text/javascript">
+            $(function () {
+                // Abre/fecha o menu no mobile
+                $('#navToggle').on('click', function () {
+                    $('#navMenu').toggleClass('open');
+                });
+
+                // Marca o link ativo de acordo com a URL atual
+                var path = window.location.pathname;
+                $('.navbar-link').each(function () {
+                    var linkPath = $(this).data('path');
+                    if (linkPath === path || (linkPath !== '/' && path.indexOf(linkPath) === 0)) {
+                        $(this).addClass('active');
+                    }
+                });
+            });
+        </script>
         #{get 'moreScripts' /}
     </body>
 </html>
