@@ -7,7 +7,13 @@
     <input type="text" name="e.patrimonio" value="${e.patrimonio}" />
     <label>Tipo</label>
     <input type="text" name="e.tipo" value="${e.tipo}" />
-    <label>Laboratório</label>
-    <input type="text" name="e.laboratorio" value="${e.laboratorio}" />
-    <input type="submit" value="Atualizar" />
+	<label>Laboratório</label>
+	<select name="e.laboratorio">
+	    <option value="Lab de Redes" ${e.laboratorio == 'Lab de Redes' ? 'selected' : ''}>Lab de Redes</option>
+	    <option value="Lab de Línguas" ${e.laboratorio == 'Lab de Línguas' ? 'selected' : ''}>Lab de Línguas</option>
+	    <option value="Lab de Projetos" ${e.laboratorio == 'Lab de Projetos' ? 'selected' : ''}>Lab de Projetos</option>
+	    <option value="Lab 01" ${e.laboratorio == 'Lab 01' ? 'selected' : ''}>Lab 01</option>
+	    <option value="Lab 02" ${e.laboratorio == 'Lab 02' ? 'selected' : ''}>Lab 02</option>
+	    <option value="Lab 03" ${e.laboratorio == 'Lab 03' ? 'selected' : ''}>Lab 03</option>
+	</select>
 </form>

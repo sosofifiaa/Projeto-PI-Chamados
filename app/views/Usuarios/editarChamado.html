@@ -5,9 +5,16 @@
     <input type="text" name="c.titulo" value="${c.titulo}" />
     <label>Descrição</label>
     <input type="text" name="c.descricao" value="${c.descricao}" />
-    <label>Prioridade</label>
-    <input type="text" name="c.prioridade" value="${c.prioridade}" />
-    <label>Status</label>
-    <input type="text" name="c.status" value="${c.status}" />
-    <input type="submit" value="Atualizar" />
+	<label>Prioridade</label>
+	<select name="c.prioridade">
+	    <option value="Alta" ${c.prioridade == 'Alta' ? 'selected' : ''}>Alta</option>
+	    <option value="Média" ${c.prioridade == 'Média' ? 'selected' : ''}>Média</option>
+	    <option value="Baixa" ${c.prioridade == 'Baixa' ? 'selected' : ''}>Baixa</option>
+	</select>
+	<label>Status</label>
+	<select name="c.status">
+	    <option value="Em andamento" ${c.status == 'Em andamento' ? 'selected' : ''}>Em andamento</option>
+	    <option value="Concluído" ${c.status == 'Concluído' ? 'selected' : ''}>Concluído</option>
+	    <option value="Não concluído" ${c.status == 'Não concluído' ? 'selected' : ''}>Não concluído</option>
+	</select>
 </form>
