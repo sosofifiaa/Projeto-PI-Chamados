@@ -1,0 +1,17 @@
+#{extends 'main.html' /}
+#{set title:'Login' /}
+
+<div class="page-wrap">
+    <h1>Login</h1>
+
+    <div class="form-card">
+        <form action="@{Logins.logar()}" method="POST">
+            <label>E-mail</label>
+            <input type="email" name="email" value="${flash.get('email')}" />
+            <label>Senha</label>
+            <input type="password" name="senha" />
+            <input type="submit" value="Entrar" />
+        </form>
+        <p>Ainda não tem conta? <a href="@{Usuarios.cadastro()}">Cadastre-se</a></p>
+    </div>
+</div>

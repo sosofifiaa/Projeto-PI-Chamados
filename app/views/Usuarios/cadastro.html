@@ -1,0 +1,24 @@
+#{extends 'main.html' /}
+#{set title:'Criar Conta' /}
+
+<div class="page-wrap">
+    <h1>Criar Conta</h1>
+
+    <div class="form-card">
+        <form action="@{Usuarios.salvarCadastro()}" method="POST">
+            <label>Nome</label>
+            <input type="text" name="u.nome" value="${params.get('u.nome')}" />
+            <span class="erro">#{error 'u.nome' /}</span>
+
+            <label>E-mail</label>
+            <input type="email" name="u.email" value="${params.get('u.email')}" />
+            <span class="erro">#{error 'u.email' /}</span>
+
+            <label>Senha</label>
+            <input type="password" name="u.senha" />
+            <span class="erro">#{error 'u.senha' /}</span>
+
+            <input type="submit" value="Cadastrar" />
+        </form>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 #{extends 'main.html' /}
 <h1>Editar Chamado</h1>
+<div class="form-card">
 <form action="@{Usuarios.atualizarChamado(c.id)}" method="POST">
     <label>Título</label>
     <input type="text" name="c.titulo" value="${c.titulo}" />
@@ -7,15 +8,17 @@
     <input type="text" name="c.descricao" value="${c.descricao}" />
 	<label>Prioridade</label>
 	<select name="c.prioridade">
-	    <option value="Alta" ${c.prioridade == 'Alta' ? 'selected' : ''}>Alta</option>
-	    <option value="Média" ${c.prioridade == 'Média' ? 'selected' : ''}>Média</option>
-	    <option value="Baixa" ${c.prioridade == 'Baixa' ? 'selected' : ''}>Baixa</option>
+	    <option value="ALTA" ${c.prioridade == 'ALTA' ? 'selected' : ''}>Alta</option>
+	    <option value="MEDIA" ${c.prioridade == 'MEDIA' ? 'selected' : ''}>Média</option>
+	    <option value="BAIXA" ${c.prioridade == 'BAIXA' ? 'selected' : ''}>Baixa</option>
 	</select>
 	<label>Status</label>
 	<select name="c.status">
-	    <option value="Em andamento" ${c.status == 'Em andamento' ? 'selected' : ''}>Em andamento</option>
-	    <option value="Concluído" ${c.status == 'Concluído' ? 'selected' : ''}>Concluído</option>
-	    <option value="Não concluído" ${c.status == 'Não concluído' ? 'selected' : ''}>Não concluído</option>
+	    <option value="EM_ANDAMENTO" ${c.status == 'EM_ANDAMENTO' ? 'selected' : ''}>Em andamento</option>
+	    <option value="CONCLUIDO" ${c.status == 'CONCLUIDO' ? 'selected' : ''}>Concluído</option>
+	    <option value="NAO_CONCLUIDO" ${c.status == 'NAO_CONCLUIDO' ? 'selected' : ''}>Não concluído</option>
 	</select>
 	<input type="submit" value="Atualizar" />
 </form>
+</div>
+</div>

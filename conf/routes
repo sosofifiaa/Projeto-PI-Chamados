@@ -6,6 +6,17 @@
 GET     /                                               Application.index
 GET     /Usuarios                                       Usuarios.listar
 
+# Autenticação
+GET     /login                                          Logins.form
+POST    /login                                          Logins.logar
+GET     /logout                                         Logins.sair
+
+# Cadastro de novos usuários
+GET     /cadastro                                       Usuarios.cadastro
+POST    /cadastro                                       Usuarios.salvarCadastro
+
+GET     /Usuarios                                       Usuarios.listar
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 

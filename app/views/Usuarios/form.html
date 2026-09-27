@@ -1,49 +1,55 @@
 #{extends 'main.html' /}
-#{set title:'Cadastro Geral' /}
+#{set title:'Abrir chamado' /}
 
 <div class="page-wrap">
-    <h1>Cadastro Geral</h1>
+    <h1>Abrir chamado </h1>
 
     <div class="form-card">
         <form action="@{Usuarios.salvar()}" method="POST">
 
-            <h2>Usuário</h2>
-            <label>Nome</label>
-            <input type="text" name="u.nome" />
-            <label>E-mail</label>
-            <input type="email" name="u.email" />
-            <label>Senha</label>
-            <input type="password" name="u.senha" />
+			<h2>Equipamento</h2>
+			           <label>Nome</label>
+			           <input type="text" name="e.nome" value="${params.get('e.nome')}" />
+			           <span class="erro">#{error 'e.nome' /}</span>
 
-            <h2>Equipamento</h2>
-            <label>Nome</label>
-            <input type="text" name="e.nome" />
-            <label>Patrimônio</label>
-            <input type="text" name="e.patrimonio" />
-            <label>Tipo</label>
-            <input type="text" name="e.tipo" />
-			<label>Laboratório</label>
-			<input type="text" name="e.laboratorio" />
+			           <label>Patrimônio</label>
+			           <input type="text" name="e.patrimonio" value="${params.get('e.patrimonio')}" />
+			           <span class="erro">#{error 'e.patrimonio' /}</span>
 
-            <h2>Chamado</h2>
-            <label>Titulo</label>
-            <input type="text" name="c.titulo" />
-            <label>Descrição</label>
-            <input type="text" name="c.descricao" />
-			<label>Prioridade</label>
-			<select name="c.prioridade">
-			    <option value="" disabled selected>Selecione</option>
-			    <option value="Alta">ALTA</option>
-			    <option value="Média">MEDIA</option>
-			    <option value="Baixa">BAIXA</option>
-			</select>
-			<label>Status</label>
-			<select name="c.status">
-			    <option value="" disabled selected>Selecione</option>
-			    <option value="Em andamento">Em andamento</option>
-			    <option value="Concluído">Concluído</option>
-			    <option value="Não concluído">Não concluído</option>
-			</select>
+			           <label>Tipo</label>
+			           <input type="text" name="e.tipo" value="${params.get('e.tipo')}" />
+			           <span class="erro">#{error 'e.tipo' /}</span>
+
+			           <label>Laboratório</label>
+			           <input type="text" name="e.laboratorio" value="${params.get('e.laboratorio')}" />
+			           <span class="erro">#{error 'e.laboratorio' /}</span>
+
+			           <h2>Chamado</h2>
+			           <label>Título</label>
+			           <input type="text" name="c.titulo" value="${params.get('c.titulo')}" />
+			           <span class="erro">#{error 'c.titulo' /}</span>
+
+			           <label>Descrição</label>
+			           <input type="text" name="c.descricao" value="${params.get('c.descricao')}" />
+			           <span class="erro">#{error 'c.descricao' /}</span>
+
+			           <label>Prioridade</label>
+			           <select name="c.prioridade">
+			               <option value="" disabled selected>Selecione</option>
+			               <option value="ALTA">Alta</option>
+			               <option value="MEDIA">Média</option>
+			               <option value="BAIXA">Baixa</option>
+			           </select>
+			           <span class="erro">#{error 'c.prioridade' /}</span>
+
+			           <label>Status</label>
+			           <select name="c.status">
+			               <option value="" disabled selected>Selecione</option>
+			               <option value="EM_ANDAMENTO">Em andamento</option>
+			               <option value="CONCLUIDO">Concluído</option>
+			               <option value="NAO_CONCLUIDO">Não concluído</option>
+			           </select>
+			           <span class="erro">#{error 'c.status' /}</span>
 
             <input type="submit" value="Cadastrar" />
         </form>

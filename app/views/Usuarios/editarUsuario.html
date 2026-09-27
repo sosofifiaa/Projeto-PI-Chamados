@@ -1,11 +1,21 @@
 #{extends 'main.html' /}
 <h1>Editar Usuário</h1>
+<div class="form-card">
 <form action="@{Usuarios.atualizarUsuario(u.id)}" method="POST">
     <label>Nome</label>
     <input type="text" name="u.nome" value="${u.nome}" />
     <label>E-mail</label>
     <input type="email" name="u.email" value="${u.email}" />
-    <label>Senha</label>
+	<label>Nova senha (deixe em branco para manter a atual)</label>
     <input type="password" name="u.senha" value="${u.senha}" />
     <input type="submit" value="Atualizar" />
+	<label>Perfil</label>
+    <select name="u.perfil">
+		<option value="ADMINISTRADOR" ${u.perfil == 'ADMINISTRADOR' ? 'selected' : ''}>Administrador</option>
+		<option value="TECNICO" ${u.perfil == 'TECNICO' ? 'selected' : ''}>Tecnico</option>
+		<option value="USUARIO" ${u.perfil == 'USUARIO' ? 'selected' : ''}>Usuario</option>
+	</select>
+	<input type="submit" value="Atualizar" />
 </form>
+</div>
+</div>

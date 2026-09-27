@@ -4,13 +4,14 @@
 <div class="page-wrap">
     <h1>Painel Geral</h1>
 
-    <a class="btn btn-primary" href="@{Usuarios.form()}">+ Novo Cadastro</a>
+    <a class="btn btn-primary" href="@{Usuarios.form()}">+ Abrir Chamado</a>
 
     <form class="search-bar" action="@{Usuarios.pesquisar()}" method="GET">
         <input type="text" name="termo" placeholder="Pesquisar..." />
         <input type="submit" value="Pesquisar" />
     </form>
 
+    #{if session.get('perfilUsuario') == 'ADMINISTRADOR' || session.get('perfilUsuario') == 'TECNICO'}
     <div class="table-section">
         <h2>Usuários</h2>
         <div class="table-wrap">
@@ -19,6 +20,7 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
+                <th>Perfil</th>
                 <th>Ações</th>
             </tr>
             #{list items:usuarios, as: 'u'}
@@ -26,6 +28,7 @@
                 <td>${u.id}</td>
                 <td>${u.nome}</td>
                 <td>${u.email}</td>
+                <td>${u.perfil}</td>
                 <td>
                     <a href="@{Usuarios.editarUsuario(u.id)}">Editar</a> |
                     <a class="remover" href="@{Usuarios.removerUsuario(u.id)}">Remover</a>
@@ -35,6 +38,7 @@
             </table>
         </div>
     </div>
+    #{/if}
 
     <div class="table-section">
         <h2>Equipamentos</h2>
@@ -46,7 +50,9 @@
                 <th>Patrimônio</th>
                 <th>Tipo</th>
                 <th>Laboratório</th>
+                #{if session.get('perfilUsuario') == 'ADMINISTRADOR' || session.get('perfilUsuario') == 'TECNICO'}
                 <th>Ações</th>
+                #{/if}
             </tr>
             #{list items:equipamentos, as: 'e'}
             <tr>
@@ -55,10 +61,12 @@
                 <td>${e.patrimonio}</td>
                 <td>${e.tipo}</td>
                 <td>${e.laboratorio}</td>
+                #{if session.get('perfilUsuario') == 'ADMINISTRADOR' || session.get('perfilUsuario') == 'TECNICO'}
                 <td>
                     <a href="@{Usuarios.editarEquipamento(e.id)}">Editar</a> |
                     <a class="remover" href="@{Usuarios.removerEquipamento(e.id)}">Remover</a>
                 </td>
+                #{/if}
             </tr>
             #{/list}
             </table>
@@ -66,31 +74,7 @@
     </div>
 
     <div class="table-section">
-        <h2>Chamado</h2>
+        <h2>Chamados</h2>
         <div class="table-wrap">
             <table>
             <tr>
-                <th>ID</th>
-                <th>Titulo</th>
-                <th>Descrição</th>
-                <th>Prioridade</th>
-                <th>Status</th>
-                <th>Ações</th>
-            </tr>
-            #{list items:chamados, as: 'c'}
-            <tr>
-                <td>${c.id}</td>
-                <td>${c.titulo}</td>
-                <td>${c.descricao}</td>
-                <td>${c.prioridade}</td>
-                <td>${c.status}</td>
-                <td>
-                    <a href="@{Usuarios.editarChamado(c.id)}">Editar</a> |
-                    <a class="remover" href="@{Usuarios.removerChamado(c.id)}">Remover</a>
-                </td>
-            </tr>
-            #{/list}
-            </table>
-        </div>
-    </div>
-</div>

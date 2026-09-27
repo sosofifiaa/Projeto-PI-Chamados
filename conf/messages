@@ -1,3 +1,13 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+validation.required=Campo obrigatório
+
+login.invalido=E-mail ou senha inválidos. Tente novamente!
+login.sucesso=Bem-vindo(a), %s!
+login.necessario=Você precisa fazer login para acessar essa página.
+login.sair=Você saiu do sistema.
+usuario.email.duplicado=Este e-mail já está cadastrado.
+chamado.sucesso=Chamado aberto com sucesso!
+acesso.negado=Você não tem permissão para acessar essa funcionalidade.
+#

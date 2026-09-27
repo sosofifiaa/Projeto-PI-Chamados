@@ -412,3 +412,32 @@ td a:hover {
 td a.remover {
     color: var(--color-danger);
 }
+.alerta {
+    max-width: 900px;
+    margin: 12px auto;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+.alerta-erro {
+    background: #fdecea;
+    color: #611a15;
+    border: 1px solid #f5c6cb;
+}
+.alerta-sucesso {
+    background: #e6f4ea;
+    color: #1e4620;
+    border: 1px solid #b7dfb9;
+}
+.navbar-user {
+    color: #cfd8dc;
+    font-size: 13px;
+    padding: 0 10px;
+}
+.erro {
+    display: block;
+    color: #c0392b;
+    font-size: 12px;
+    margin-top: -8px;
+    margin-bottom: 6px;
+}

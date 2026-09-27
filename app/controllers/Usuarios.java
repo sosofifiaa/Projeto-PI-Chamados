@@ -4,8 +4,14 @@ import java.util.List;
 import models.Usuario;
 import models.Chamado;
 import models.Equipamento;
+import models.Perfil;
 import play.mvc.Controller;
+import play.mvc.With;
+import security.Administrador;
+import security.Seguranca;
 
+
+@With(Seguranca.class)
 public class Usuarios extends Controller {
 
     public static void listar() {
@@ -19,15 +25,45 @@ public class Usuarios extends Controller {
         render();
     }
 
-    public static void salvar(Usuario u, Equipamento e, Chamado c) {
-        u.save();
+    public static void salvar(Equipamento e, Chamado c) {
+    	if (validation.hasErrors()) {
+    		flash.error("Corrija os campos destacados antes de continuar!");
+    		params.flash();
+    		validation.keep();
+    		form();
+    	}
+    	
+      Usuario logado = Usuario.findById(Long.valueOf(session.get("idUsuario")));
+      
         e.save();
-        c.usuario = u;
+        c.usuario = logado;
         c.equipamento = e;
         c.save();
         listar();
+        flash.success("Chamado aberto com sucesso!");
+        listar();
     }
-
+    public static void cadastro() {
+        render();
+    }
+    public static void salvarCadastro(Usuario u) {
+    	if (Usuario.existeUsuario(u.email)) {
+    		validation.addError("u.email", "Este email já está cadastrado");
+    		
+    	}
+    	  if (validation.hasErrors()) {
+              flash.error("Corrija os campos destacados antes de continuar.");
+              params.flash();
+              validation.keep();
+              cadastro();
+          }
+    	  u.perfil = Perfil.USUARIO;
+    	  u.save();
+    	  
+    	  flash.success("Cadastro realizado com sucesso! Faça login para continuar.");
+          Logins.form();
+    }
+    @Administrador
     public static void editarUsuario(Long id) {
         Usuario u = Usuario.findById(id);
         render(u);
@@ -37,23 +73,28 @@ public class Usuarios extends Controller {
         Usuario usuario = Usuario.findById(id);
         usuario.nome = u.nome;
         usuario.email = u.email;
-        usuario.senha = u.senha;
+        if (u.senha != null && !u.senha.isEmpty()) {
+        	usuario.senha = u.senha;
+        }
+        
+        usuario.perfil = u.perfil;
         usuario.save();
         listar();
     }
-
+    @Administrador
     public static void removerUsuario(Long id) {
         Usuario u = Usuario.findById(id);
         u.ativo = false;
         u.save();
         listar();
     }
-
+    
+    @Administrador
     public static void editarEquipamento(Long id) {
         Equipamento e = Equipamento.findById(id);
         render(e);
     }
-
+    @Administrador
     public static void atualizarEquipamento(Long id, Equipamento e) {
         Equipamento equipamento = Equipamento.findById(id);
         equipamento.nome = e.nome;
@@ -63,6 +104,7 @@ public class Usuarios extends Controller {
         equipamento.save();
         listar();
     }
+    @Administrador
 
     public static void removerEquipamento(Long id) {
         Equipamento e = Equipamento.findById(id);
@@ -70,11 +112,13 @@ public class Usuarios extends Controller {
         e.save();
         listar();
     }
+    @Administrador
 
     public static void editarChamado(Long id) {
         Chamado c = Chamado.findById(id);
         render(c);
     }
+    @Administrador
 
     public static void atualizarChamado(Long id, Chamado c) {
         Chamado chamado = Chamado.findById(id);
@@ -85,6 +129,7 @@ public class Usuarios extends Controller {
         chamado.save();
         listar();
     }
+    @Administrador
 
     public static void removerChamado(Long id) {
         Chamado c = Chamado.findById(id);
