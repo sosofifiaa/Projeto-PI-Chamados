@@ -2,6 +2,9 @@ package jobs;
 import models.Perfil;
 import models.Usuario;
 import play.jobs.Job;
+import play.jobs.OnApplicationStart;
+
+@OnApplicationStart
 public class Inicializador extends Job {
 	
 	public void doJob() {

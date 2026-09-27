@@ -66,15 +66,45 @@
                     <a href="@{Usuarios.editarEquipamento(e.id)}">Editar</a> |
                     <a class="remover" href="@{Usuarios.removerEquipamento(e.id)}">Remover</a>
                 </td>
-                #{/if}
-            </tr>
-            #{/list}
-            </table>
-        </div>
-    </div>
+				#{/if}
+				</tr>
+				  #{/list}
+	              </table>
+				  </div>
+				   </div>
+				<div class="table-section">
+				        <h2>Chamados</h2>
+				        <div class="table-wrap">
+				            <table>
+				            <tr>
+				                <th>ID</th>
+				                <th>Titulo</th>
+				                <th>Descrição</th>
+				                <th>Prioridade</th>
+				                <th>Status</th>
+								#{if session.get('perfilUsuario') == 'ADMINISTRADOR' || session.get('perfilUsuario') == 'TECNICO'}
+				                <th>Ações</th>
+								#{/if}
+				            </tr>
+				            #{list items:chamados, as: 'c'}
+				            <tr>
+				                <td>${c.id}</td>
+				                <td>${c.titulo}</td>
+				                <td>${c.descricao}</td>
+				                <td>${c.prioridade}</td>
+				                <td>${c.status}</td>
+								#{if session.get('perfilUsuario') == 'ADMINISTRADOR' || session.get('perfilUsuario') == 'TECNICO'}
 
-    <div class="table-section">
-        <h2>Chamados</h2>
-        <div class="table-wrap">
-            <table>
-            <tr>
+				                <td>
+				                    <a href="@{Usuarios.editarChamado(c.id)}">Editar</a> |
+				                    <a class="remover" href="@{Usuarios.removerChamado(c.id)}">Remover</a>
+				                </td>
+								#{/if}
+				            </tr>
+				            #{/list}
+				            </table>
+				        </div>
+				    </div>
+				</div>
+       
+     
